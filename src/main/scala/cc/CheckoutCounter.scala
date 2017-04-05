@@ -21,6 +21,6 @@ object CheckoutCounter {
 case class Product(name: String, price: Price)
 
 object Product {
-  lazy val apple: Product = Product("apple", r"60/100")
-  lazy val orange: Product = Product("orange", r"25/100")
+  lazy val apple: Product = Product("apple", r".60")
+  lazy val orange: Product = Product("orange", r".25")
 }

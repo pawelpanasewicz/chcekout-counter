@@ -13,7 +13,7 @@ class SellingSpec extends Spec {
     checkoutCounter.consume(orange)
     checkoutCounter.consume(apple)
     checkoutCounter.consume(apple)
-    checkoutCounter.total() mustBe r"205/100" withClue "Apple cost is .60GPB and orange cost is .25GPB"
+    checkoutCounter.total() mustBe r"2.05" withClue "Apple cost is .60GPB and orange cost is .25GPB"
   }
 }
 
