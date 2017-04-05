@@ -1,19 +1,8 @@
 package cc
+package internals
+
 import Product._
-import spire.math._
 import spire.implicits._
-
-object Promo {
-
-  def discount(products: Map[Product, Count]): Price = {
-    val apples = products(apple)
-    val oranges = products(orange)
-    val totalProducts = apples + oranges
-    val atMostCanBeForFree = totalProducts/2 //flor division
-    if(oranges < apples) atMostCanBeForFree * apple.price else apples * apple.price
-  }
-}
-
 
 class PromoSpec extends Spec {
 
