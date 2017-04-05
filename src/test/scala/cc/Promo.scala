@@ -24,6 +24,7 @@ class PromoSpec extends Spec {
     Promo.discount(Map[Product, Count](apple -> 10, orange -> 5)) mustBe (apple.price * 7) withClue "only one apple for free (two apples)"
     Promo.discount(Map[Product, Count](apple -> 10, orange -> 0)) mustBe (apple.price * 5) withClue "half of apples for free"
     Promo.discount(Map[Product, Count](apple -> 11, orange -> 0)) mustBe (apple.price * 5) withClue "half of apples for free - even if there is odd number of them"
+    Promo.discount(Map[Product, Count](apple -> 0, orange -> 1)) mustBe 0 withClue "no apples at all"
   }
 
 }
