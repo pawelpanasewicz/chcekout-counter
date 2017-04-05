@@ -1,5 +1,9 @@
 package cc
 
+import spire.implicits._
+import spire.math._
+import spire.random._
+
 class SellingSpec extends Spec {
 
   "Selling goods - happy path" in {
@@ -9,7 +13,7 @@ class SellingSpec extends Spec {
     checkoutCounter.consume(orange)
     checkoutCounter.consume(apple)
     checkoutCounter.consume(apple)
-    checkoutCounter.total() mustBe .60 + .25 + .60 + .60 withClue "Apple cost is .60GPB and orange cost is .25GPB"
+    checkoutCounter.total() mustBe r"205/100" withClue "Apple cost is .60GPB and orange cost is .25GPB"
   }
 }
 
