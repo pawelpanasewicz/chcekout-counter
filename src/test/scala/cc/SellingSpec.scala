@@ -10,6 +10,7 @@ class SellingSpec extends Spec {
     import Product._
     val checkoutCounter = CheckoutCounter()
     checkoutCounter.newTrade()
+    checkoutCounter.total() mustBe 0 withClue "Initially total is 0"
     checkoutCounter.consume(apple)
     checkoutCounter.consume(orange)
     checkoutCounter.consume(apple)
@@ -17,10 +18,12 @@ class SellingSpec extends Spec {
     checkoutCounter.total() mustBe r"2.05" withClue "Apple cost is .60GPB and orange cost is .25GPB"
 
     checkoutCounter.newTrade()
+    checkoutCounter.total() mustBe 0 withClue "Initially total is 0"
     checkoutCounter.consume(apple)
     checkoutCounter.consume(orange)
     checkoutCounter.consume(orange)
     checkoutCounter.total() mustBe r"1.1" withClue "Second trade"
+
   }
 
 }
