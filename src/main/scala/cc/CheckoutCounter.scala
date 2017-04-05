@@ -4,20 +4,8 @@ import spire.implicits._
 import spire.math._
 import spire.random._
 
-trait CheckoutCounter {
-  def newTrade(): Unit
-  def total(): Price
-  def consume(p: Product): Unit
-}
-
 object CheckoutCounter {
-
-  def apply(): CheckoutCounter = new CheckoutCounter {
-    var state: Price = 0
-    override def consume(p: Product): Unit = {state = state + p.price}
-    override def total(): Price = state
-    override def newTrade(): Unit = {state = 0}
-  }
+  def computeCost(product: Product, products: Product*): Price = products.foldLeft(product.price)(_ + _.price)
 }
 
 case class Product(name: String, price: Price)

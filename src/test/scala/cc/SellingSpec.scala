@@ -6,24 +6,12 @@ import spire.random._
 
 class SellingSpec extends Spec {
 
-  "Selling goods - happy path" in {
+  "Selling goods" in {
     import Product._
-    val checkoutCounter = CheckoutCounter()
-    checkoutCounter.newTrade()
-    checkoutCounter.total() mustBe 0 withClue "Initially total is 0"
-    checkoutCounter.consume(apple)
-    checkoutCounter.consume(orange)
-    checkoutCounter.consume(apple)
-    checkoutCounter.consume(apple)
-    checkoutCounter.total() mustBe r"2.05" withClue "Apple cost is .60GPB and orange cost is .25GPB"
-
-    checkoutCounter.newTrade()
-    checkoutCounter.total() mustBe 0 withClue "Initially total is 0"
-    checkoutCounter.consume(apple)
-    checkoutCounter.consume(orange)
-    checkoutCounter.consume(orange)
-    checkoutCounter.total() mustBe r"1.1" withClue "Second trade"
-
+    CheckoutCounter.computeCost(apple) mustBe r".60" withClue "Apple cost is .60GPB"
+    CheckoutCounter.computeCost(orange) mustBe r".25" withClue "Orange cost is .25GPB"
+    CheckoutCounter.computeCost(apple, orange, apple, apple) mustBe r"2.05" withClue "Cost of many items simply sums up"
+    CheckoutCounter.computeCost(apple, orange, orange) mustBe r"1.10" withClue "Cost of many items simply sums up"
   }
 
 }
