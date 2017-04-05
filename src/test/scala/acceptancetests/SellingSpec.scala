@@ -1,7 +1,7 @@
-package cc
+package acceptancetests
 
+import cc.{CheckoutCounter, Product, Spec}
 import spire.implicits._
-import spire.math._
 
 class SellingSpec extends Spec {
 
