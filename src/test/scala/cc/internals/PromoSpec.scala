@@ -16,4 +16,14 @@ class PromoSpec extends Spec {
     Promo.discount1(Map[Product, Count](apple -> 0, orange -> 1)) mustBe 0 withClue "no apples at all"
   }
 
+  "3 for the price of 2 on Oranges" in {
+    Promo.discount2(Map[Product, Count](apple -> 0, orange -> 3)) mustBe orange.price withClue "one orange for free"
+    Promo.discount2(Map[Product, Count](apple -> 10, orange -> 3)) mustBe orange.price withClue "one orange for free - even if there are apples"
+    Promo.discount2(Map[Product, Count](apple -> 10, orange -> 4)) mustBe orange.price withClue "still one orange for free - you need two more to get second one discounted"
+    Promo.discount2(Map[Product, Count](apple -> 1, orange -> 10)) mustBe (orange.price * 3) withClue "for 10 oranges 3 goes for free"
+    Promo.discount2(Map[Product, Count](apple -> 10, orange -> 2)) mustBe 0 withClue "no discount for oranges"
+  }
+
+
+
 }

@@ -17,4 +17,10 @@ object Promo {
     if(oranges < apples) atMostCanBeForFree * apple.price else apples * apple.price
   }
 
+  def discount2(products: Map[Product, Count]): Price = {
+    val oranges = products(orange)
+    val howManyOrangesForFree = oranges / 3
+    howManyOrangesForFree * orange.price
+  }
+
 }
