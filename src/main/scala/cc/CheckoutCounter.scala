@@ -1,5 +1,4 @@
 package cc
-import Product._
 
 trait CheckoutCounter {
   def total(): Double
