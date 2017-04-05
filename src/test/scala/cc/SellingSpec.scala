@@ -2,7 +2,6 @@ package cc
 
 import spire.implicits._
 import spire.math._
-import spire.random._
 
 class SellingSpec extends Spec {
 
