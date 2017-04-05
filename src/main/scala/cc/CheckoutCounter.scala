@@ -13,7 +13,8 @@ object CheckoutCounter {
     val occurrences: Map[Product, Count] = all.foldLeft(emptyMap)((acc, p) => acc.updated(p, acc(p) + 1))
     val initialCost = cost(occurrences)
     val discount1 = Promo.discount1(occurrences)
-    initialCost - discount1
+    val discount2 = Promo.discount2(occurrences)
+    initialCost - discount1 - discount2
   }
 
   private def cost(occurrences: Map[Product, Count]): Price = occurrences.foldLeft(0: Price)((acc, kv) => acc + (kv._1.price * kv._2))
